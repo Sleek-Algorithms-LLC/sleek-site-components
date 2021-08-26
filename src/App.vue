@@ -1,34 +1,26 @@
 <template>
-    <div class="main-wrapper">
-        <div class="menu">
-            <router-link to='/'>Home</router-link>
-        </div>
-        <div class="map-wrapper">
-            <router-view />
-        </div>
-    </div>
+  <SleekTest />
 </template>
-<script>
-export default {
-    components: {},
-}
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import SleekTest from './components/SleekTest/SleekTest.vue'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    SleekTest
+  }
+})
 </script>
-<style scoped>
-.main-wrapper {
-    display: flex;
-}
 
-.menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.menu .router-link-exact-active {
-    background-color: lightgray;
-}
-
-.map-wrapper {
-    height: 75vh;
-    width: 100%;
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
