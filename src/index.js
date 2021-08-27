@@ -2,28 +2,18 @@
 // import component from './my-component.vue';
 import SleekTest from './components/SleekTest/SleekTest.vue'
 
-// Declare install function executed by Vue.use()
-export function install(Vue) {
-	if (install.installed) return;
-	install.installed = true;
-	Vue.component('SleekTest', SleekTest);
+export {
+  SleekTest
 }
 
-// Create module definition for Vue.use()
-const plugin = {
-	install,
-};
+export function install(Vue, options) {
+  options = {
+    installComponents: true,
+    ...options
+  }
 
-// Auto-install when vue is found (eg. in browser via <script> tag)
-let GlobalVue = null;
-if (typeof window !== 'undefined') {
-	GlobalVue = window.Vue;
-} else if (typeof global !== 'undefined') {
-	GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-	GlobalVue.use(plugin);
+  if(options.installComponents) {
+    Vue.component('SleekTest', SleekTest)
+  }
 }
 
-// To allow use as module (npm/webpack/etc.) export component
-export default SleekTest;
